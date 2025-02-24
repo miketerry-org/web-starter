@@ -1,25 +1,33 @@
 {
+  "server": {
+    "port": 8080,
+    "sessionSecret": "c742fc1277b384bb698210ffb9032287c625751804f5f66985877f9e79e00a61",
+    "sessionTimeout": 30,
+    "rateLimitMS": 60000,
+    "rateLimitMax": 100,
+    "tokenExpiration": 10
+  },
   "paths": {
-    "public": "public",
+    "static": "public",
     "views": "views",
     "layouts": "views",
-    "partials": "views"
+    "partials": "views",
+    "defaultLayout": "layout"
   },
-  "defaultLayout": "layout",
   "tenants": [
     {
       "tenant_id": 1,
       "node_id": 1,
-      "hostname": "www.mvc-starter",
+      "hostname": "www.local",
       "locals": {
-        "title": "MVC Starter (public)",
-        "slogan": "Best little Model, View, Controller web application starter",
+        "title": "Web Starter (public)",
+        "slogan": "Best little web application starter",
         "owner": "miketerry.org",
         "copyright": 2025,
         "roles": ["Guest", "subscriber", "Admin"]
       },
       "dbConfig": {
-        "url": "/data/mvc-starter.sqlite",
+        "url": "/data/www.local.sqlite",
         "host": null,
         "port": null,
         "dbConfig": null,
@@ -45,16 +53,16 @@
     {
       "tenant_id": 2,
       "node_id": 1,
-      "hostname": "alpha.mvc-starter",
+      "hostname": "alpha.local",
       "locals": {
-        "title": "MVC Starter (alpha)",
-        "slogan": "Best little Model, View, Controller web application starter",
+        "title": "Web Starter (alpha)",
+        "slogan": "Best little web application starter",
         "owner": "miketerry.org",
         "copyright": 2025,
         "roles": ["Guest", "subscriber", "designer", "Admin"]
       },
       "dbConfig": {
-        "url": "/data/mvc-starter-alpha.sqlite",
+        "url": "/data/alpha.local.sqlite",
         "host": null,
         "port": null,
         "dbConfig": null,
@@ -80,10 +88,10 @@
     {
       "tenant_id": 3,
       "node_id": 1,
-      "hostname": "beta.mvc-starter",
+      "hostname": "beta.local",
       "locals": {
-        "title": "MVC Starter (beta)",
-        "slogan": "Best little Model, View, Controller web application starter",
+        "title": "beta.local",
+        "slogan": "Best little web application starter",
         "owner": "miketerry.org",
         "copyright": 2025,
         "roles": ["Guest", "subscriber", "Admin"]

@@ -7,12 +7,10 @@ const https = require("https");
 const core = require("./lib/core.js");
 
 // pass all modules needed to setup the application
-// be sure all paths are relative to the root of the project
 core.setupModules([
   "./lib/setups/express",
   "./lib/setups/handlebars",
-  //"./lib/setups/multitenant",
-  "./lib/setups//nodemailer",
+  //  "./lib/setups//nodemailer",
   "./lib/features/home/setup",
   "./lib/features/about/setup",
   "./lib/features/contact/setup",

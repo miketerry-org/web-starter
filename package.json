@@ -1,7 +1,7 @@
 {
-  "name": "MVC-starter",
-  "version": "0.5.3",
-  "description": "Starter web application using node, express, template literals, HTMX, nodemailer, passport , libsql-orm and Tailwind",
+  "name": "Web-starter",
+  "version": "0.5.5",
+  "description": "Starter web application using node, express, handlebars, HTMX, nodemailer, libsql-orm and Tailwind",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -11,7 +11,9 @@
     "dev": "NODE_ENV=DEV node --watch --env-file=.env index.js",
     "encrypt": "topsecret encrypt config.json config.secure --key-file config.key",
     "generate": "topsecret generate --key-file config.key",
-    "temp": "NODE_ENV=DEV node --watch --env-file .env lib/config.js"
+    "config": "NODE_ENV=prod node --watch --env-file=.env lib/config.js",
+    "core": "NODE_ENV=prod node --watch --env-file=.env lib/core.js",
+    "utils": "NODE_ENV=prod node --watch --env-file=.env lib/utils.js"
   },
   "dependencies": {
     "compression": "^1.7.5",
@@ -24,7 +26,7 @@
     "express-handlebars": "^8.0.1",
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
-    "express-tenants": "^0.5.5",
+    "express-tenants": "^0.6.1",
     "express-xss-sanitizer": "^2.0.0",
     "helmet": "^8.0.0",
     "hpp": "^0.2.3",
@@ -40,24 +42,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miketerry-org/mvc-starter.git"
+    "url": "git+https://github.com/miketerry-org/web-starter.git"
   },
   "keywords": [
     "controller",
     "express",
-    "express-multitenant",
+    "express-tenants",
     "express-template-literal",
     "htmx",
     "libsql",
     "libsql-orm",
-    "literal",
     "mvc",
     "model",
     "node",
     "nodemailer",
     "sqlite3",
     "tailwind",
-    "template",
     "view",
     "web"
   ],
