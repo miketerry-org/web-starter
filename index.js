@@ -10,34 +10,35 @@ const core = require("./lib/core.js");
 core.setupModules([
   "./lib/setups/express",
   "./lib/setups/handlebars",
-  //  "./lib/setups//nodemailer",
+  "./lib/setups/libsql-orm",
   "./lib/features/home/setup",
   "./lib/features/about/setup",
   "./lib/features/contact/setup",
   "./lib/features/support/setup",
 ]);
 
-try {
-  // Determine which server to start based on NODE_ENV
-  if (process.env.NODE_ENV === "DEV") {
-    // Define paths to SSL certificates (if in development mode)
-    const sslOptions =
-      process.env.NODE_ENV === "DEV"
-        ? {
-            key: fs.readFileSync("localhost-key.pem"),
-            cert: fs.readFileSync("localhost.pem"),
-          }
-        : null;
-
-    https.createServer(sslOptions, core.app).listen(8080, () => {
-      console.log("HTTPS server running on https://localhost:8080");
-    });
+function createServer() {
+  // if not in production mode then use local ssl certificates  and create https server
+  if (!core.isProduction) {
+    return https.createServer(
+      {
+        key: fs.readFileSync("localhost-key.pem"),
+        cert: fs.readFileSync("localhost.pem"),
+      },
+      core.app
+    );
   } else {
-    // Production or other environments (HTTP)
-    http.createServer(core.app).listen(8080, () => {
-      console.log("HTTP server running on http://localhost:8080");
-    });
+    // when in production create plain http server as runtime environment handles ssl layer
+    return http.createServer(core.app);
   }
+}
+
+try {
+  const server = createServer();
+
+  server.listen(core.server.port, () => {
+    console.log(`Server is listening on port ${core.server.port}`);
+  });
 } catch (err) {
-  core.fatal(err.message);
+  console.error(err.message);
 }

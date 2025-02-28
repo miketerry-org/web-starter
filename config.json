@@ -27,7 +27,7 @@
         "roles": ["Guest", "subscriber", "Admin"]
       },
       "dbConfig": {
-        "url": "/data/www.local.sqlite",
+        "url": "./data/www.sqlite",
         "host": null,
         "port": null,
         "dbConfig": null,
@@ -40,8 +40,8 @@
           "max": 10,
           "idleTimeoutMillis": 30000
         },
-        "encrypt_cypher": "",
-        "encrypt_key": ""
+        "encryptionCipher": "",
+        "encryptionKey": ""
       },
       "smtpConfig": {
         "host": "smtp.miketerry.org",
@@ -62,7 +62,7 @@
         "roles": ["Guest", "subscriber", "designer", "Admin"]
       },
       "dbConfig": {
-        "url": "/data/alpha.local.sqlite",
+        "url": "./data/alpha.sqlite",
         "host": null,
         "port": null,
         "dbConfig": null,
@@ -75,8 +75,8 @@
           "max": 10,
           "idleTimeoutMillis": 30000
         },
-        "encrypt_cypher": "",
-        "encrypt_key": ""
+        "encryptionCipher": "",
+        "encryptionKey": ""
       },
       "smtpConfig": {
         "host": "smtp.miketerry.org",
@@ -97,7 +97,7 @@
         "roles": ["Guest", "subscriber", "Admin"]
       },
       "dbConfig": {
-        "url": "/data/mvc-starter-beta.sqlite",
+        "url": "./data/beta.sqlite",
         "host": null,
         "port": null,
         "dbConfig": null,
@@ -110,8 +110,8 @@
           "max": 10,
           "idleTimeoutMillis": 30000
         },
-        "encrypt_cypher": "",
-        "encrypt_key": ""
+        "encryptionCypher": "",
+        "encryptionKey": ""
       },
       "smtpConfig": {
         "host": "smtp.miketerry.org",
