@@ -1,7 +1,3 @@
-/**
- * !!mike, the express-tenants package is currently using a global link because i am not finished fixing bugs in it.  once fixed i need to republish and remove link usage
- *
- */
 // index.js: Performs all setup for express web application
 
 // Load all necessary packages
