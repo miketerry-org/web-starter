@@ -1,14 +1,12 @@
 {
-  "name": "Web-starter",
-  "version": "0.5.5",
+  "name": "web-starter",
+  "version": "0.5.7",
   "description": "Starter web application using node, express, handlebars, HTMX, nodemailer, libsql-orm and Tailwind",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "start": "NODE_ENV=PROD node index.js",
     "dev": "NODE_ENV=DEV node --watch --env-file=.env index.js",
+    "test": "jest",
     "generate": "topsecret generate --key-file config.key",
     "encrypt": "topsecret encrypt config.json config.secure --key-file config.key",
     "decrypt": "topsecret decrypt config.secure config.json --key-file config.key"
@@ -16,7 +14,6 @@
   "dependencies": {
     "compression": "^1.7.5",
     "confirm-env": "^1.0.1",
-    "confirm-json": "^0.6.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
@@ -29,9 +26,7 @@
     "helmet": "^8.0.0",
     "hpp": "^0.2.3",
     "html-minifier-terser": "^7.2.0",
-    "htmx.org": "^1.9.12",
     "https": "^1.0.0",
-    "json-rule": "^0.5.7",
     "mongoose": "^8.11.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.16",
@@ -58,10 +53,18 @@
     "view",
     "web"
   ],
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "author": "miketerry.org",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/miketerry-org/mvc-starter/issues"
   },
-  "homepage": "https://github.com/miketerry-org/mvc-starter#readme"
+  "homepage": "https://github.com/miketerry-org/mvc-starter#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
 }
