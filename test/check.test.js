@@ -45,14 +45,78 @@ describe("isBoolean", () => {
       let data = { active: "T" };
       let checker = new Check(data);
       checker.isBoolean("active", undefined);
-      console.clear();
-      console.log("errors", checker.errors);
       expect(checker.errors.length).toBe(0);
       expect(data.active).toBe(true);
     });
 
     it(`should be string "F" and converted to boolean false`, () => {
       let data = { active: "F" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(false);
+    });
+
+    it(`should be string "YES" and converted to boolean true`, () => {
+      let data = { active: "YES" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(true);
+    });
+
+    it(`should be string "NO" and converted to boolean false`, () => {
+      let data = { active: "NO" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(false);
+    });
+
+    it(`should be string "y" and converted to boolean true`, () => {
+      let data = { active: "y" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(true);
+    });
+
+    it(`should be string "n" and converted to boolean false`, () => {
+      let data = { active: "n" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(false);
+    });
+
+    it(`should be string "On" and converted to boolean true`, () => {
+      let data = { active: "On" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(true);
+    });
+
+    it(`should be string "Off" and converted to boolean false`, () => {
+      let data = { active: "Off" };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(false);
+    });
+  });
+
+  describe(`typeof = "number"`, () => {
+    it(`should be number 1 and converted to boolean true`, () => {
+      let data = { active: 1 };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(0);
+      expect(data.active).toBe(true);
+    });
+
+    it(`should be number 0 and converted to boolean false`, () => {
+      let data = { active: 0 };
       let checker = new Check(data);
       checker.isBoolean("active", undefined);
       expect(checker.errors.length).toBe(0);
