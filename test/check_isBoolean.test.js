@@ -1,4 +1,4 @@
-// check.test.js:
+// check_isBoolean.test.js:
 
 "use strict";
 
@@ -123,81 +123,33 @@ describe("isBoolean", () => {
       expect(data.active).toBe(false);
     });
   });
-});
 
-describe("isString", () => {
-  describe("capitalization", () => {
-    it("should be first letter capital for each word", () => {
-      const data = { firstname: "donald mallard" };
+  describe("typeof is unsupported type", () => {
+    it("is date which is invalid boolean", () => {
+      let data = { active: new Date() };
       let checker = new Check(data);
-      checker.isString("firstname", undefined, 1, 20, "title");
-      expect(checker.errors.length).toBe(0);
-      expect(data.firstname).toBe("Donald Mallard");
-    });
-
-    it("should be capital for first word", () => {
-      const data = { lastname: "duck" };
-      let checker = new Check(data);
-      checker.isString("lastname", undefined, 1, 20, "first");
-      expect(checker.errors.length).toBe(0);
-      expect(data.lastname).toBe("Duck");
-    });
-
-    it("should be all uppercase letters", () => {
-      const data = { lastname: "duck" };
-      let checker = new Check(data);
-      checker.isString("lastname", undefined, 1, 20, "upper");
-      expect(checker.errors.length).toBe(0);
-      expect(data.lastname).toBe("DUCK");
-    });
-
-    it("should be all lower case letters", () => {
-      const data = { lastname: "DUCK" };
-      let checker = new Check(data);
-      checker.isString("lastname", undefined, 1, 20, "lower");
-      expect(checker.errors.length).toBe(0);
-      expect(data.lastname).toBe("duck");
-    });
-  });
-
-  describe("required", () => {
-    it("is required", () => {
-      const data = { lastname: "donald mallard" };
-      let checker = new Check(data);
-      checker.isString("firstname", undefined, 1, 10, "title");
+      checker.isBoolean("active", undefined);
       expect(checker.errors.length).toBe(1);
     });
 
-    it("is not required", () => {
-      const data = { lastname: "donald mallard" };
+    it("is float which is invalid boolean", () => {
+      let data = { active: 3.14 };
       let checker = new Check(data);
-      checker.isString("firstname", undefined, 1, 10, "title");
-      expect(checker.errors.length).toBe(1);
-    });
-  });
-
-  describe("default value", () => {
-    it("should use default", () => {
-      const data = { lastname: "donald mallard" };
-      let checker = new Check(data);
-      checker.isString("firstname", "Daisy", 1, 10, "title");
-      expect(checker.errors.length).toBe(0);
-      expect(data.firstname).toBe("Daisy");
-    });
-  });
-
-  describe("minLength & maxLength", () => {
-    it("should have length of 5 or more", () => {
-      const data = { lastname: "DUCK" };
-      let checker = new Check(data);
-      checker.isString("lastname", undefined, 5, 20, "lower");
+      checker.isBoolean("active", undefined);
       expect(checker.errors.length).toBe(1);
     });
 
-    it("should have length of 10 or less", () => {
-      const data = { lastname: "donald mallard" };
+    it("is object which is invalid boolean", () => {
+      let data = { active: { value: true } };
       let checker = new Check(data);
-      checker.isString("lastname", undefined, 1, 10, "title");
+      checker.isBoolean("active", undefined);
+      expect(checker.errors.length).toBe(1);
+    });
+
+    it("is array which is invalid boolean", () => {
+      let data = { active: [1, 2, 3] };
+      let checker = new Check(data);
+      checker.isBoolean("active", undefined);
       expect(checker.errors.length).toBe(1);
     });
   });
