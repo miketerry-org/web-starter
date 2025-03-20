@@ -3,7 +3,7 @@
 "use strict";
 
 // load all required modules
-const Check = require("../lib/utils/check");
+const Check = require("../../lib/utils/check");
 
 describe("isBoolean", () => {
   describe('typeof = "boolean"', () => {

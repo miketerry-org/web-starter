@@ -3,7 +3,7 @@
 "use strict";
 
 // load all necessary modules
-const Check = require("../lib/utils/check");
+const Check = require("../../lib/utils/check");
 
 describe(`isDate`, () => {
   describe(`typeof = Date object`, () => {

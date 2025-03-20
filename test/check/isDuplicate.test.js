@@ -3,7 +3,8 @@
 "use strict";
 
 // load all necessary modules
-const Check = require("../lib/utils/check");
+const Check = require("../../lib/utils/check");
+const { today, tomorrow, yesterday } = require("../../lib/utils/dates");
 
 describe(`isDuplicate`, () => {
   describe(`typeof = "boolean"`, () => {
@@ -22,22 +23,36 @@ describe(`isDuplicate`, () => {
 
   describe(`typeof = "date"`, () => {
     it(`should be a duplicate`, () => {
-      const data = { value1: new Date.now(), value2: new Date.now() };
+      const data = { value1: today(), value2: today() };
       const checker = new Check(data).isDuplicate("value1", "value2");
       expect(checker.errors.length).toBe(0);
     });
 
     it(`should not be a duplicate`, () => {
-      const data = { value1: new Date(), value2: new Date() + 1 };
+      const data = { value1: today(), value2: tomorrow() };
       const checker = new Check(data).isDuplicate("value1", "value2");
       expect(checker.errors.length).toBe(1);
     });
   });
 
   describe(`typeof = "email"`, () => {
-    it(`should be a duplicate`, () => {});
+    it(`should be a duplicate`, () => {
+      const data = {
+        value1: "support@example.com",
+        value2: "support@example.com",
+      };
+      const checker = new Check(data).isDuplicate("value1", "value2");
+      expect(checker.errors.length).toBe(0);
+    });
 
-    it(`should not be a duplicate`, () => {});
+    it(`should not be a duplicate`, () => {
+      const data = {
+        value1: "support@example.com",
+        value2: "support@example.net",
+      };
+      const checker = new Check(data).isDuplicate("value1", "value2");
+      expect(checker.errors.length).toBe(1);
+    });
   });
 
   describe(`typeof = "enum"`, () => {
