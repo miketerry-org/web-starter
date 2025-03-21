@@ -56,7 +56,9 @@ describe(`isDuplicate`, () => {
   });
 
   describe(`typeof = "enum"`, () => {
-    it(`should be a duplicate`, () => {});
+    it(`should be a duplicate`, () => {
+      const data = { role1: "Guest", role2: "Guest" };
+    });
 
     it(`should not be a duplicate`, () => {});
   });
