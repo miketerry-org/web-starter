@@ -4,6 +4,10 @@
 
 // load all required modules
 const Check = require("../../lib/utils/check");
+const logger = require("../test-logger");
+
+console.log("hello world");
+logger.info("hello world");
 
 describe("isBoolean", () => {
   describe('typeof = "boolean"', () => {
@@ -13,6 +17,7 @@ describe("isBoolean", () => {
       checker.isBoolean("active", undefined);
       expect(checker.errors.length).toBe(0);
       expect(data.active).toBe(true);
+      logger.info("should be type boolean and be true", true);
     });
 
     it("should be boolean type and be false", () => {

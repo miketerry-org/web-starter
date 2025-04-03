@@ -6,14 +6,15 @@
   "scripts": {
     "start": "NODE_ENV=PROD node index.js",
     "dev": "NODE_ENV=DEV node --watch --env-file=.env index.js",
-    "test": "jest --watch",
-    "generate": "topsecret generate --key-file config.key",
-    "encrypt": "topsecret encrypt config.json config.secure --key-file config.key",
-    "decrypt": "topsecret decrypt config.secure config.json --key-file config.key"
+    "test": "jest --watch --detectOpenHandles",
+    "generate": "topsecret generate --key-file ./.config/encrypt.key",
+    "encrypt": "topsecret encrypt ./.config/server.json config-server.secure --key-file ./.config/encrypt.key && topsecret encrypt ./.config/tenants.json config-tenants.secure --key-file ./.config/encrypt.key",
+    "decrypt": "topsecret decrypt ./config-server.secure ./.config/server-decrypted.json --key-file ./.config/encrypt.key && topsecret decrypt ./config-tenants.secure ./.config/tenants-decrypted.json --key-file ./.config/encrypt.key"
   },
   "dependencies": {
     "compression": "^1.7.5",
     "confirm-env": "^1.0.1",
+    "confirm-json": "^2.0.3",
     "connect-mongodb-session": "^5.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -22,19 +23,25 @@
     "express-handlebars": "^8.0.1",
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
-    "express-tenants": "^0.7.8",
+    "express-tenants": "^0.8.0",
     "express-xss-sanitizer": "^2.0.0",
     "helmet": "^8.0.0",
     "hpp": "^0.2.3",
     "html-minifier-terser": "^7.2.0",
     "https": "^1.0.0",
-    "jest": "^29.7.0",
-    "json-rule": "^0.5.7",
     "mongoose": "^8.11.0",
+    "moredate": "^0.0.4",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.16",
     "topsecret": "^0.7.3",
+    "winston": "^3.17.0",
+    "winston-mongodb": "^6.0.0",
     "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   },
   "repository": {
     "type": "git",
@@ -45,13 +52,12 @@
     "express",
     "express-tenants",
     "htmx",
-    "libsql",
-    "libsql-orm",
+    "mongodb",
+    "mongoose",
     "mvc",
     "model",
     "node",
     "nodemailer",
-    "sqlite3",
     "tailwind",
     "view",
     "web"
@@ -65,8 +71,5 @@
   "bugs": {
     "url": "https://github.com/miketerry-org/mvc-starter/issues"
   },
-  "homepage": "https://github.com/miketerry-org/mvc-starter#readme",
-  "devDependencies": {
-    "supertest": "^7.0.0"
-  }
+  "homepage": "https://github.com/miketerry-org/mvc-starter#readme"
 }
